@@ -1,4 +1,4 @@
-package com.github.circuitrunners;
+package com.github.circuitrunners.calib;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;

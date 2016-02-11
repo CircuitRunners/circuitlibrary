@@ -1,4 +1,4 @@
-package com.github.circuitrunners;
+package com.github.circuitrunners.calib;
 
 /**
  * Shamelessly copied wholesale from Vector.java but renamed to avoid confusion with utils.Vector

@@ -10,7 +10,7 @@
     <repositories>
         <repository>
             <id>WPILib</id>
-            <url>http://first.wpi.edu/FRC/roborio/maven/</url>
+            <url>http://first.wpi.edu/FRC/roborio/maven/release</url>
         </repository>
     </repositories>
 

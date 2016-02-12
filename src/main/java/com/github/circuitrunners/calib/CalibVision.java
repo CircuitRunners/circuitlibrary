@@ -1,19 +1,10 @@
 package com.github.circuitrunners.calib;
 
 
-import org.opencv.core.Mat;
-import org.opencv.core.MatOfPoint;
-import org.opencv.core.Scalar;
-import org.opencv.imgcodecs.Imgcodecs;
-import org.opencv.imgproc.Imgproc;
-import org.opencv.videoio.VideoCapture;
-
-import java.util.ArrayList;
-
 /**
  * Shoutout to Fauge7 and team 3019 for teaching me wtf im doin
  */
-public class CalibVision {
+public class CalibVision {/*
     public static final Scalar
     RED = new Scalar(0,0,255),
     BLUE = new Scalar(255,0,0),
@@ -25,7 +16,7 @@ public class CalibVision {
 
     public static VideoCapture videoCapture;
     public static Mat matOriginal, matHSL, matContour, matFilteredContour, clusters, matHeirarchy;
-    /* Commented workspace boys
+    *//* Commented workspace boys
     needed input: leftProjection, bottomProjection, rightProjection (left, bottom, right sides of seen target)
     also need solid angle of camera FoV + distance to seen target? also camera angle up/down
 
@@ -37,7 +28,7 @@ public class CalibVision {
     derive xy angle from angle of cp, then factor in distance (from ultrasonic?) to get the numbers that matter
 
     note to self: include input for offsets of camera to shooter (angle, x y z)
-    */
+    *//*
     public static void filterRectangle(){
         ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>();
         double x,y,targetX,targetY,distance,azimuth;
@@ -53,7 +44,7 @@ public class CalibVision {
 
 
 
-    }
+    }*/
 
     public double[] detectCircle(String imagesrc){
         double[] array = new double[0]; //Placeholder until I figure out this shit

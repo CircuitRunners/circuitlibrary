@@ -10,10 +10,66 @@
     <repositories>
         <repository>
             <id>WPILib</id>
-            <url>http://first.wpi.edu/FRC/roborio/maven/release</url>
+            <url>http://first.wpi.edu/FRC/roborio/maven/release/</url>
+        </repository>
+        <repository>
+            <id>javaopencvbook</id>
+            <url>https://raw.github.com/JavaOpenCVBook/code/maven2/</url>
         </repository>
     </repositories>
+<build>
+    <plugins>
+        <plugin>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.4</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <classpathPrefix>lib/</classpathPrefix>
+                        <mainClass>com.mycompany.app.App</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
 
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.1</version>
+            <executions>
+                <execution>
+                    <id>copy-dependencies</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>copy-dependencies</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        <overWriteReleases>false</overWriteReleases>
+                        <overWriteSnapshots>false</overWriteSnapshots>
+                        <overWriteIfNewer>true</overWriteIfNewer>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+        <plugin>
+            <groupId>com.googlecode.mavennatives</groupId>
+            <artifactId>maven-nativedependencies-plugin</artifactId>
+            <version>0.0.7</version>
+            <executions>
+                <execution>
+                    <id>unpacknatives</id>
+                    <phase>generate-resources</phase>
+                    <goals>
+                        <goal>copy</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
     <dependencies>
         <dependency>
             <groupId>edu.wpi.first.wpilibj</groupId>
@@ -23,7 +79,20 @@
         <dependency>
             <groupId>edu.wpi.first.wpilib.networktables.java</groupId>
             <artifactId>NetworkTables</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>3.0.0-SNAPSHOT</version>
+            <classifier>desktop</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.javaopencvbook</groupId>
+            <artifactId>opencvjar</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.javaopencvbook</groupId>
+            <artifactId>opencvjar-runtime</artifactId>
+            <version>3.0.0</version>
+            <classifier>natives-windows-x86_64</classifier>
         </dependency>
     </dependencies>
 </project>

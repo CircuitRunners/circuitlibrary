@@ -1,6 +1,5 @@
 package com.github.circuitrunners.calib;
 
-
 /**
  * Shoutout to Fauge7 and team 3019 for teaching me wtf im doin
  */

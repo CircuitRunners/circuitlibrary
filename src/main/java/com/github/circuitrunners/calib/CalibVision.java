@@ -1,14 +1,9 @@
 package com.github.circuitrunners.calib;
 
-
-import org.opencv.core.Mat;
-import org.opencv.core.Scalar;
-import org.opencv.videoio.VideoCapture;
-
 /**
  * Shoutout to Fauge7 and team 3019 for teaching me wtf im doin
  */
-public class CalibVision {
+public class CalibVision {/*
     public static final Scalar
     RED = new Scalar(0,0,255),
     BLUE = new Scalar(255,0,0),
@@ -20,7 +15,7 @@ public class CalibVision {
 
     public static VideoCapture videoCapture;
     public static Mat matOriginal, matHSL, matContour, matFilteredContour, clusters, matHeirarchy;
-    /* Commented workspace boys
+    *//* Commented workspace boys
     needed input: leftProjection, bottomProjection, rightProjection (left, bottom, right sides of seen target)
     also need solid angle of camera FoV + distance to seen target? also camera angle up/down
 

@@ -1,5 +1,7 @@
 package com.github.circuitrunners.calib;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * Useful CalibMath, living creatures
  */
@@ -164,10 +166,34 @@ public class CalibMath {
      * @return
      */
     public static double angle(double[] a, double[] b){
-        if (a.length != b.length) return 0;
+        if (a.length != b.length) return 0; //cant dotproduct uneven dimensioned vectors
         double dot = dotProduct(a,b);
         double magA = magnitude(a);
         double magB = magnitude(b);
         return Math.acos(dot/(magA*magB));
     }
+
+    public static double gyroLimit(double input){
+        while (input > 360){
+            input -= 360;
+        }
+        while (input < 0){
+            input += 360;
+        }
+        return input;
+    }
+
+    public static double average(double... input){
+        double sum = 0;
+        for (int i=0; i<input.length; i++){
+            sum +=input[i];
+        }
+        return (sum / input.length);
+    }
+
+    public static String answerQuestion(){
+        String[] answers = {"YES","NO","MAYBE","I DONT KNOW","CAN YOU REPEAT THE QUESTION","YOURE NOT THE BOSS OF ME NOW"};
+        return answers[ThreadLocalRandom.current().nextInt(0,6)]; //shhh let it be
+    }
+
 }

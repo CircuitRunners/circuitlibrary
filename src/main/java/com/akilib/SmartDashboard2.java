@@ -43,46 +43,28 @@ public class SmartDashboard2 extends SmartDashboard {
         putData(value);
     }
 
-    public static Object get(String key, NetworkTableType networkTableType) {
-        switch (networkTableType) {
-            case BOOLEAN:
-                return getBoolean(key);
-            case STRING:
-                return getString(key);
-            case NUMBER:
-                return getNumber(key);
-            case DATA:
-                return getData(key);
-        }
-        return null;
+    public static boolean get(String key, boolean defaultValue) {
+        return getBoolean(key, defaultValue);
     }
-
-    public static void get(String key, boolean defaultValue) {
-        getBoolean(key, defaultValue);
+    public static byte get(String key, byte defaultValue) {
+        return (byte) getNumber(key, defaultValue);
     }
-    public static void get(String key, byte defaultValue) {
-        getNumber(key, defaultValue);
+    public static short get(String key, short defaultValue) {
+        return (short) getNumber(key, defaultValue);
     }
-    public static void get(String key, short defaultValue) {
-        getNumber(key, defaultValue);
+    public static int get(String key, int defaultValue) {
+        return (int) getNumber(key, defaultValue);
     }
-    public static void get(String key, int defaultValue) {
-        getNumber(key, defaultValue);
+    public static long get(String key, long defaultValue) {
+        return (long) getNumber(key, defaultValue);
     }
-    public static void get(String key, long defaultValue) {
-        getNumber(key, defaultValue);
+    public static float get(String key, float defaultValue) {
+        return (float) getNumber(key, defaultValue);
     }
-    public static void get(String key, float defaultValue) {
-        getNumber(key, defaultValue);
+    public static double get(String key, double defaultValue) {
+        return getNumber(key, defaultValue);
     }
-    public static void get(String key, double defaultValue) {
-        getNumber(key, defaultValue);
-    }
-    public static void get(String key, String defaultValue) {
-        getString(key, defaultValue);
-    }
-
-    public enum NetworkTableType {
-        BOOLEAN, STRING, NUMBER, DATA
+    public static String get(String key, String defaultValue) {
+        return getString(key, defaultValue);
     }
 }

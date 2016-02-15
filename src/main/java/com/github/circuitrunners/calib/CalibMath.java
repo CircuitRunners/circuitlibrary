@@ -131,6 +131,15 @@ public class CalibMath {
         return output;
     }
 
+    public static double inverseAdjustedDeadband(double input, double max){
+        double output = 1;
+        double scale = 1 / max;
+        if(Math.abs(input) <= max){
+            output = Math.signum(input) * (Math.abs(input) * scale);
+        }
+        return output;
+    }
+
     /**
      * Finds the magnitude of input vector
      * @param input: double array of vector values

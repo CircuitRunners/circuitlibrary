@@ -47,7 +47,7 @@ public class CalibVision {
     derive xy angle from angle of cp, then factor in distance (from ultrasonic?) to get the numbers that matter
 
     note to self: include input for offsets of camera to shooter (angle, x y z)
-    *//*
+    */
     public static void filterRectangle(){
         ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>();
         double x,y,targetX,targetY,distance,azimuth;
@@ -98,7 +98,7 @@ public class CalibVision {
         }
 //			output an image for debugging
         Imgcodecs.imwrite("output.png", matOriginal);
-*/
+
 
     }
 

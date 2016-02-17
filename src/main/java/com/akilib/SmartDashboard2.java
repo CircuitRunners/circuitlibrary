@@ -2,6 +2,7 @@ package com.akilib;
 
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Sendable;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 
@@ -10,7 +11,7 @@ import edu.wpi.first.wpilibj.tables.ITable;
  */
 public class SmartDashboard2 extends SmartDashboard {
 
-    private static ITable table;
+    private static ITable table = NetworkTable.getTable("SmartDashboard");
 
     public static boolean put(String key, boolean value) {
         putBoolean(key, value);

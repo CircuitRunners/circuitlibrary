@@ -12,38 +12,48 @@ public class SmartDashboard2 extends SmartDashboard {
 
     private static ITable table;
 
-    public static void put(String key, boolean value) {
+    public static boolean put(String key, boolean value) {
         putBoolean(key, value);
+        return value;
     }
 
-    public static void put(String key, String value) {
+    public static String put(String key, String value) {
         putString(key, value);
+        return value;
     }
 
-    public static void put(String key, byte value) {
+    public static byte put(String key, byte value) {
         putNumber(key, value);
+        return value;
     }
-    public static void put(String key, short value) {
+    public static short put(String key, short value) {
         putNumber(key, value);
+        return value;
     }
-    public static void put(String key, int value)  {
+    public static int put(String key, int value)  {
         putNumber(key, value);
+        return value;
     }
-    public static void put(String key, long value)  {
+    public static long put(String key, long value)  {
         putNumber(key, value);
+        return value;
     }
-    public static void put(String key, float value) {
+    public static float put(String key, float value) {
         putNumber(key, value);
+        return value;
     }
-    public static void put(String key, double value) {
+    public static double put(String key, double value) {
         putNumber(key, value);
+        return value;
     }
 
-    public static void put(String key, Sendable value) {
+    public static Sendable put(String key, Sendable value) {
         putData(key, value);
+        return value;
     }
-    public static void put(NamedSendable value) {
+    public static NamedSendable put(NamedSendable value) {
         putData(value);
+        return value;
     }
 
     public static boolean get(String key, boolean defaultValue) {

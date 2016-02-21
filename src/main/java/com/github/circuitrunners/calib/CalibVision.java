@@ -96,7 +96,7 @@ public class CalibVision {
 //				angle to target...would not rely on this
             targetX = rec.tl().x + rec.width / 2;
             targetX = (2 * (targetX / matOriginal.width())) - 1;
-            azimuth = CalibMath.gyroLimit(targetX*HORIZONTAL_FOV /2.0 + 0);
+            azimuth = CalibMath.normalize360(targetX*HORIZONTAL_FOV /2.0 + 0);
 //				drawing info on target
             Point center = new Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2);
             Point centerw = new Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2 - 20);

@@ -182,7 +182,7 @@ public class CalibMath {
         return Math.acos(dot/(magA*magB));
     }
 
-    public static double gyroLimit(double input){
+    public static double normalize360(double input){
         while (input > 360){
             input -= 360;
         }
@@ -199,6 +199,23 @@ public class CalibMath {
         }
         return (sum / input.length);
     }
+
+    public static double getLargestValue(double... inputs){
+        double greatest = 0;
+        for (int i=0; i<inputs.length; i++){
+            greatest = inputs[i] > greatest ? inputs[i] : greatest;
+        }
+        return greatest;
+    }
+
+    public static int getLargestIndex(double... inputs){
+        int greatest = 0;
+        for (int i=0; i<inputs.length; i++){
+            greatest = inputs[i] > greatest ? i : greatest;
+        }
+        return greatest;
+    }
+
 
     public static String answerQuestion(){
         String[] answers = {"YES","NO","MAYBE","I DONT KNOW","CAN YOU REPEAT THE QUESTION","YOURE NOT THE BOSS OF ME NOW"};

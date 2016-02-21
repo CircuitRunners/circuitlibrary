@@ -1,4 +1,4 @@
-package com.akilib;
+package com.github.circuitrunners.akilib;
 
 import edu.wpi.first.wpilibj.NamedSendable;
 import edu.wpi.first.wpilibj.Sendable;

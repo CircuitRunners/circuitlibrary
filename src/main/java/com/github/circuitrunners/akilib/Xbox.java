@@ -4,38 +4,36 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
- * Created by Owner on 2/9/2016.
+ * Created by Akilan on 19.02.2016.
  */
 public class Xbox extends Joystick {
 
     private final int port;
-    private final Joystick controller;
-    public final JoystickButton a;
-    public final JoystickButton b;
-    public final JoystickButton x;
-    public final JoystickButton y;
-    public final JoystickButton start;
-    public final JoystickButton back;
-    public final JoystickButton leftBumper;
-    public final JoystickButton rightBumper;
-    public final JoystickButton l3;
-    public final JoystickButton r3;
+    private final JoystickButton a;
+    private final JoystickButton b;
+    private final JoystickButton x;
+    private final JoystickButton y;
+    private final JoystickButton leftBumper;
+    private final JoystickButton rightBumper;
+    private final JoystickButton back;
+    private final JoystickButton start;
+    private final JoystickButton l3;
+    private final JoystickButton r3;
 
 
     public Xbox(final int port) {
         super(port);
         this.port = port;
-        this.controller = new Joystick(this.port);
-        this.a = new JoystickButton(this.controller, 1);
-        this.b = new JoystickButton(this.controller, 2);
-        this.x = new JoystickButton(this.controller, 3);
-        this.y = new JoystickButton(this.controller, 4);
-        this.start = new JoystickButton(this.controller, 7);
-        this.back = new JoystickButton(this.controller, 8);
-        this.leftBumper = new JoystickButton(this.controller, 5);
-        this.rightBumper = new JoystickButton(this.controller, 6);
-        this.l3 = new JoystickButton(this.controller, 9);
-        this.r3 = new JoystickButton(this.controller, 10);
+        a = new JoystickButton(this, 0);
+        b = new JoystickButton(this, 1);
+        x = new JoystickButton(this, 2);
+        y = new JoystickButton(this, 3);
+        leftBumper = new JoystickButton(this, 4);
+        rightBumper = new JoystickButton(this, 5);
+        back = new JoystickButton(this, 6);
+        start = new JoystickButton(this, 7);
+        l3 = new JoystickButton(this, 8);
+        r3 = new JoystickButton(this, 9);
 
     }
 
@@ -57,14 +55,14 @@ public class Xbox extends Joystick {
                 return leftBumper.get();
             case RIGHT_BUMPER:
                 return rightBumper.get();
-            case L3:
-                return l3.get();
-            case R3:
-                return r3.get();
             case BACK:
                 return back.get();
             case START:
                 return start.get();
+            case L3:
+                return l3.get();
+            case R3:
+                return r3.get();
         }
         return false;
     }
@@ -75,12 +73,12 @@ public class Xbox extends Joystick {
                 return getRawAxis(0);
             case LEFT_Y:
                 return getRawAxis(1);
+            case TRIGGER:
+                return getRawAxis(3);
             case RIGHT_X:
                 return getRawAxis(4);
             case RIGHT_Y:
                 return getRawAxis(5);
-            case TRIGGER:
-                return getRawAxis(3);
         }
         return 0;
     }
@@ -90,7 +88,7 @@ public class Xbox extends Joystick {
     }
 
     public enum Axis {
-        LEFT_X, LEFT_Y, RIGHT_X, RIGHT_Y, TRIGGER
+        LEFT_X, LEFT_Y, TRIGGER, RIGHT_X, RIGHT_Y
     }
 }
 

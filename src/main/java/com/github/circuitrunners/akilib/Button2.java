@@ -25,6 +25,11 @@ public class Button2 extends Button {
         this.direction = direction.getAngle();
     }
 
+    public Button2(Xbox xbox, Xbox.Axis axis) {
+        this.joystick = xbox;
+        this.axis = axis.ordinal();
+    }
+
     @Override
     public boolean get() {
         return axis == -1 ? getPOV() : getAxis();

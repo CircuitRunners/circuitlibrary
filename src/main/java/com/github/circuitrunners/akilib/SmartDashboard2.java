@@ -53,7 +53,7 @@ public class SmartDashboard2 extends SmartDashboard {
         return value;
     }
     public static NamedSendable put(NamedSendable value) {
-        putData(value);
+        if (value != null) putData(value);
         return value;
     }
 
@@ -96,7 +96,7 @@ public class SmartDashboard2 extends SmartDashboard {
     }
 
     public static Sendable get(String key, NamedSendable defaultValue) {
-        if (!table.containsKey(key)) putData(defaultValue);
+        if (defaultValue != null && !table.containsKey(key)) putData(defaultValue);
         return getData(key);
     }
 }

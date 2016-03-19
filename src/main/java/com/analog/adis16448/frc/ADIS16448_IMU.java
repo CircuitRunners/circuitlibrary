@@ -224,6 +224,7 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, LiveWind
     try {
       m_task.join();
     } catch (InterruptedException e) {
+      // Ignored
     }
     if (m_interrupt != null) {
       m_interrupt.free();
@@ -276,7 +277,7 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, LiveWind
       // Code originated from: https://decibel.ni.com/content/docs/DOC-18964
       do {
         // If true, only use gyros and magnetos for updating the filter.
-        boolean excludeAccel = false;
+        // boolean excludeAccel = false; TODO: use this
 
         // Convert accelerometer units to m/sec/sec
         double ax = accel_x * kAccelScale;
@@ -284,7 +285,7 @@ public class ADIS16448_IMU extends GyroBase implements Gyro, PIDSource, LiveWind
         double az = accel_z * kAccelScale;
         // Normalize accelerometer measurement
         double norm = Math.sqrt(ax * ax + ay * ay + az * az);
-        if (norm > 0.3 && !excludeAccel) {
+        if (norm > 0.3 /* && !excludeAccel TODO: use this */) {
           // normal larger than the sensor noise floor during freefall
           norm = 1.0 / norm; 
           ax *= norm;

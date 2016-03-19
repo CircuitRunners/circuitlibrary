@@ -19,8 +19,7 @@ public class CalibVector {
 
         // defensive copy so that client can't alter our copy of data[]
         this.data = new double[N];
-        for (int i = 0; i < N; i++)
-            this.data[i] = data[i];
+        System.arraycopy(data, 0, this.data, 0, N);
     }
 
     // create a vector from either an array or a vararg list

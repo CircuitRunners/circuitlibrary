@@ -56,8 +56,8 @@ public class CalibVision {
     note to self: include input for offsets of camera to shooter (angle, x y z)
     */
     public static void filterRectangle(){
-        ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>();
-        double x,y,targetX,targetY,distance,azimuth;
+        ArrayList<MatOfPoint> contours = new ArrayList<>();
+        // double x,y,targetX,targetY,distance,azimuth; TODO: use these
         matOriginal = new Mat();
         matThresh = new Mat();
         matHSV = new Mat();
@@ -110,8 +110,7 @@ public class CalibVision {
     }
 
     public double[] detectCircle(String imagesrc){
-        double[] array = new double[0]; //Placeholder until I figure out this shit
-        return array;
+        return new double[0];
     }
 
     //	the size for resing the image
@@ -123,7 +122,7 @@ public class CalibVision {
         NIVision.Image proccessedImage = new HSLImage().image;
         NIVision.imaqColorThreshold(camera.getImage().image, new HSLImage().image, 0, NIVision.ColorMode.HSL,
                 new NIVision.Range(60, 128), new NIVision.Range(60, 128), new NIVision.Range(60, 128));
-        ArrayList<MatOfPoint> contours = new ArrayList<MatOfPoint>();
+        ArrayList<MatOfPoint> contours = new ArrayList<>();
         double x,y,targetX,targetY,distance,azimuth;
 //		frame counter
         int FrameCount = 0;
@@ -144,7 +143,7 @@ public class CalibVision {
 //			make sure the contours that are detected are at least 20x20
 //			pixels with an area of 400 and an aspect ration greater then 1
             for (Iterator<MatOfPoint> iterator = contours.iterator(); iterator.hasNext();) {
-                MatOfPoint matOfPoint = (MatOfPoint) iterator.next();
+                MatOfPoint matOfPoint = iterator.next();
                 Rect rec = Imgproc.boundingRect(matOfPoint);
                 if(rec.height < 25 || rec.width < 25){
                     iterator.remove();

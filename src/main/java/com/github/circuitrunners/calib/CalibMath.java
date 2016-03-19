@@ -8,8 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class CalibMath {
 /** Turns a -1 to 1 into 0 to 1 value */
     public static double throttleMath(double input){
-        double output = (-input+1)/2;
-        return output;
+        return (-input+1)/2;
     }
 /**
  *  Adds deadband, then scales input by a factor linearly.
@@ -147,8 +146,8 @@ public class CalibMath {
      */
     public static double magnitude(double[] input){
         double sum = 0;
-        for (int i=0; i<input.length; i++){
-            sum += input[i] * input[i];
+        for (double anInput : input) {
+            sum += anInput * anInput;
         }
         return Math.sqrt(sum);
     }
@@ -194,16 +193,16 @@ public class CalibMath {
 
     public static double average(double... input){
         double sum = 0;
-        for (int i=0; i<input.length; i++){
-            sum +=input[i];
+        for (double anInput : input) {
+            sum += anInput;
         }
         return (sum / input.length);
     }
 
     public static double getLargestValue(double... inputs){
         double greatest = 0;
-        for (int i=0; i<inputs.length; i++){
-            greatest = inputs[i] > greatest ? inputs[i] : greatest;
+        for (double input : inputs) {
+            greatest = input > greatest ? input : greatest;
         }
         return greatest;
     }

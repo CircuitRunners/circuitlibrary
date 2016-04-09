@@ -110,10 +110,6 @@ public class SmartDashboard2 extends SmartDashboard {
 
     public static boolean get(String key, boolean defaultValue) {
         if (network) {
-            if (!table.containsKey(key)) {
-                putBoolean(key, defaultValue);
-                return defaultValue;
-            }
             return getBoolean(key, defaultValue);
         } else {
             if (!dashboard.containsKey(key)) {
@@ -125,10 +121,6 @@ public class SmartDashboard2 extends SmartDashboard {
     }
     public static byte get(String key, byte defaultValue) {
         if (network) {
-            if (!table.containsKey(key)) {
-                putNumber(key, defaultValue);
-                return defaultValue;
-            }
             return (byte) getNumber(key, defaultValue);
         } else {
             if (!dashboard.containsKey(key)) {
@@ -142,10 +134,6 @@ public class SmartDashboard2 extends SmartDashboard {
 
     public static short get(String key, short defaultValue) {
         if (network) {
-            if (!table.containsKey(key)) {
-                putNumber(key, defaultValue);
-                return defaultValue;
-            }
             return (short) getNumber(key, defaultValue);
         } else {
             if (!dashboard.containsKey(key)) {
@@ -158,10 +146,6 @@ public class SmartDashboard2 extends SmartDashboard {
     }
     public static int get(String key, int defaultValue) {
         if (network) {
-            if (!table.containsKey(key)) {
-                putNumber(key, defaultValue);
-                return defaultValue;
-            }
             return (int) getNumber(key, defaultValue);
         } else {
             if (!dashboard.containsKey(key)) {
@@ -173,10 +157,6 @@ public class SmartDashboard2 extends SmartDashboard {
     }
     public static long get(String key, long defaultValue) {
         if (network) {
-            if (!table.containsKey(key)) {
-                putNumber(key, defaultValue);
-                return defaultValue;
-            }
             return (long) getNumber(key, defaultValue);
         } else {
             if (!dashboard.containsKey(key)) {
@@ -187,25 +167,68 @@ public class SmartDashboard2 extends SmartDashboard {
         }
     }
     public static float get(String key, float defaultValue) {
-        if (!table.containsKey(key)) putNumber(key, defaultValue);
-        return (float) getNumber(key, defaultValue);
+        if (network) {
+            return (float) getNumber(key, defaultValue);
+        } else {
+            if (!dashboard.containsKey(key)) {
+                dashboard.put(key, defaultValue);
+                return defaultValue;
+            }
+            return (float) dashboard.get(key);
+        }
     }
     public static double get(String key, double defaultValue) {
-        if (!table.containsKey(key)) putNumber(key, defaultValue);
-        return getNumber(key, defaultValue);
+        if (network) {
+            return getNumber(key, defaultValue);
+        } else {
+            if (!dashboard.containsKey(key)) {
+                dashboard.put(key, defaultValue);
+                return defaultValue;
+            }
+            return (double) dashboard.get(key);
+        }
     }
     public static String get(String key, String defaultValue) {
-        if (!table.containsKey(key)) putString(key, defaultValue);
-        return getString(key, defaultValue);
+        if (network) {
+            return getString(key, defaultValue);
+        } else {
+            if (!dashboard.containsKey(key)) {
+                dashboard.put(key, defaultValue);
+                return defaultValue;
+            }
+            return (String) dashboard.get(key);
+        }
     }
 
     public static Sendable get(String key, Sendable defaultValue) {
-        if (!table.containsKey(key)) putData(key, defaultValue);
-        return getData(key);
+        if (network) {
+            if (!table.containsKey(key) && defaultValue != null) {
+                putData(key, defaultValue);
+                return defaultValue;
+            }
+            return getData(key);
+        } else {
+            if (!dashboard.containsKey(key) && defaultValue != null) {
+                dashboard.put(key, defaultValue);
+                return defaultValue;
+            }
+            return (Sendable) dashboard.get(key);
+        }
     }
 
     public static Sendable get(String key, NamedSendable defaultValue) {
-        if (defaultValue != null && !table.containsKey(key)) putData(defaultValue);
-        return getData(key);
+        if (network) {
+            if (!table.containsKey(key) && defaultValue != null) {
+                putData(defaultValue);
+                return defaultValue;
+            }
+            return getData(key);
+        } else {
+            if (!dashboard.containsKey(key) && defaultValue != null) {
+                dashboard.put(key, defaultValue);
+                return defaultValue;
+            }
+            return (Sendable) dashboard.get(key);
+        }
     }
 }

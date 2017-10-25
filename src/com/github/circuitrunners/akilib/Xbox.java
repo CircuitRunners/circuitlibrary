@@ -85,6 +85,22 @@ public class Xbox extends Joystick {
         return 0;
     }
 
+    public double get(Axis axis, double deadzoneLimit) {
+        switch (axis) {
+            case LEFT_X:
+                return JoystickHelper.deadzone(getRawAxis(0), deadzoneLimit);
+            case LEFT_Y:
+              return JoystickHelper.deadzone(getRawAxis(1), deadzoneLimit);
+            case TRIGGER:
+              return JoystickHelper.deadzone(getRawAxis(3), deadzoneLimit);
+            case RIGHT_X:
+              return JoystickHelper.deadzone(getRawAxis(4), deadzoneLimit);
+            case RIGHT_Y:
+              return JoystickHelper.deadzone(getRawAxis(5), deadzoneLimit);
+        }
+        return 0;
+    }
+
     public enum Button {
         A, B, X, Y, LEFT_BUMPER, RIGHT_BUMPER, L3, R3, BACK, START
     }

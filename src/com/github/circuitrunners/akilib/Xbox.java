@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class Xbox extends Joystick {
 
+    private static final double DEFAULT_DEADZONE_LIMIT = 0.05;
+
     private final int port;
     private final JoystickButton a;
     private final JoystickButton b;
@@ -70,15 +72,15 @@ public class Xbox extends Joystick {
     public double get(Axis axis) {
         switch (axis) {
             case LEFT_X:
-                return getRawAxis(0);
+                return JoystickHelper.deadzone(getRawAxis(0), DEFAULT_DEADZONE_LIMIT);
             case LEFT_Y:
-                return getRawAxis(1);
+              return JoystickHelper.deadzone(getRawAxis(1), DEFAULT_DEADZONE_LIMIT);
             case TRIGGER:
-                return getRawAxis(3);
+              return JoystickHelper.deadzone(getRawAxis(3), DEFAULT_DEADZONE_LIMIT);
             case RIGHT_X:
-                return getRawAxis(4);
+              return JoystickHelper.deadzone(getRawAxis(4), DEFAULT_DEADZONE_LIMIT);
             case RIGHT_Y:
-                return getRawAxis(5);
+              return JoystickHelper.deadzone(getRawAxis(5), DEFAULT_DEADZONE_LIMIT);
         }
         return 0;
     }
